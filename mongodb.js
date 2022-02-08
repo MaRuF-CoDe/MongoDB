@@ -88,33 +88,52 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // })
 
 
-    UPDATE
+    // UPDATE
 
-    db.collection('user').updateOne({
-        _id: new ObjectID("62018e5ebc942c70534a2720")
-    }, {
-        $inc: {
-            age: 1
-        }
+    // db.collection('user').updateOne({
+    //     _id: new ObjectID("62018e5ebc942c70534a2720")
+    // }, {
+    //     $inc: {
+    //         age: 1
+    //     }
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+
+
+    // db.collection('tasks').updateMany({
+    //     completed: false
+    // }, {
+    //     $set: {
+    //         completed: true
+    //     }
+    // }).then((result) => {
+    //     console.log(result.modifiedCount)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+
+
+    //DELETE
+
+    //     db.collection('user').deleteMany({
+    //     age: 23
+    // }).then((result) => {
+    //     console.log(result)
+    // }).catch((error) => {
+    //     console.log(error)
+    // })
+
+    db.collection('tasks').deleteOne({
+        descriptio: "Cleaning"
     }).then((result) => {
         console.log(result)
     }).catch((error) => {
         console.log(error)
     })
-
-
-
-    db.collection('tasks').updateMany({
-        completed: false
-    }, {
-        $set: {
-            completed: true
-        }
-    }).then((result) => {
-        console.log(result.modifiedCount)
-    }).catch((error) => {
-        console.log(error)
-    })
-
 
 })
