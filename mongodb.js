@@ -1,6 +1,6 @@
 //CRUD create read update delete
 
-const { MongoClient,ObjectID } = require('mongodb')
+const { MongoClient, ObjectID } = require('mongodb')
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
@@ -16,7 +16,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     }
     const db = client.db(databaseName)
 
-    //create
+    //CREATE
 
     // db.collection('user').insertOne({
     //     name : 'Maruf',
@@ -63,27 +63,58 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
 
 
-//Read
+    //READ
 
 
 
-// db.collection('user').findOne({ _id: new ObjectID("62018e5ebc942c70534a2720") }, (error, user) => {
-//         if (error) {
-//             return console.log('Unable to fetch')
-//         }
+    // db.collection('user').findOne({ _id: new ObjectID("62018e5ebc942c70534a2720") }, (error, user) => {
+    //         if (error) {
+    //             return console.log('Unable to fetch')
+    //         }
 
-//         console.log(user)
-//     })
+    //         console.log(user)
+    //     })
 
-//     db.collection('user').find({ age: 25 }).toArray((error, users) => {
-//         console.log(users)
-//     })
+    //     db.collection('user').find({ age: 25 }).toArray((error, users) => {
+    //         console.log(users)
+    //     })
 
-    db.collection('tasks').findOne({ _id: new ObjectID("6201933b7c3452e7cab21778") }, (error, task) => {
-        console.log(task)
+    // db.collection('tasks').findOne({ _id: new ObjectID("6201933b7c3452e7cab21778") }, (error, task) => {
+    //     console.log(task)
+    // })
+
+    // db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
+    //     console.log(tasks)
+    // })
+
+
+    UPDATE
+
+    db.collection('user').updateOne({
+        _id: new ObjectID("62018e5ebc942c70534a2720")
+    }, {
+        $inc: {
+            age: 1
+        }
+    }).then((result) => {
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
     })
 
-    db.collection('tasks').find({ completed: false }).toArray((error, tasks) => {
-        console.log(tasks)
+
+
+    db.collection('tasks').updateMany({
+        completed: false
+    }, {
+        $set: {
+            completed: true
+        }
+    }).then((result) => {
+        console.log(result.modifiedCount)
+    }).catch((error) => {
+        console.log(error)
     })
+
+
 })
