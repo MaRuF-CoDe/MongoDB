@@ -3,7 +3,8 @@
 const { MongoClient, ObjectID } = require('mongodb')
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
-const databaseName = 'task-manager'
+const databaseName = 'MongoDB_CRUD'
+
 
 
 // const id = new ObjectID()
@@ -43,14 +44,14 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     // db.collection('tasks').insertMany([
     //     {
-    //         descriptio: 'Cleaning',
+    //         description: 'Cleaning',
     //         completed: true
     //     },
     //     {
-    //         descriptio: 'Inspection',
+    //         description: 'Inspection',
     //         completed: false
     //     }, {
-    //         descriptio: 'Planting',
+    //         description: 'Planting',
     //         completed: false
     //     },
     // ], (error, result) => {
@@ -67,7 +68,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
 
 
-    // db.collection('user').findOne({ _id: new ObjectID("62018e5ebc942c70534a2720") }, (error, user) => {
+    // db.collection('user').findOne({ _id: new ObjectID("6202db425d5ccecf0ee4657d") }, (error, user) => {
     //         if (error) {
     //             return console.log('Unable to fetch')
     //         }
@@ -79,7 +80,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     //         console.log(users)
     //     })
 
-    // db.collection('tasks').findOne({ _id: new ObjectID("6201933b7c3452e7cab21778") }, (error, task) => {
+    // db.collection('tasks').findOne({ _id: new ObjectID("6202db425d5ccecf0ee46580") }, (error, task) => {
     //     console.log(task)
     // })
 
@@ -91,7 +92,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     // UPDATE
 
     // db.collection('user').updateOne({
-    //     _id: new ObjectID("62018e5ebc942c70534a2720")
+    //     _id: new ObjectID("6202db425d5ccecf0ee4657f")
     // }, {
     //     $inc: {
     //         age: 1
@@ -120,16 +121,16 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     //DELETE
 
-    //     db.collection('user').deleteMany({
-    //     age: 23
-    // }).then((result) => {
-    //     console.log(result)
-    // }).catch((error) => {
-    //     console.log(error)
-    // })
+        db.collection('user').deleteMany({
+        age: 23
+    }).then((result) => {
+        console.log(result)
+    }).catch((error) => {
+        console.log(error)
+    })
 
     db.collection('tasks').deleteOne({
-        descriptio: "Cleaning"
+        description: "Cleaning"
     }).then((result) => {
         console.log(result)
     }).catch((error) => {
